@@ -4,4 +4,18 @@
    <layout title="COM_BDGALLERY_BDGALLERY_VIEW_DEFAULT_TITLE">
       <message>COM_BDGALLERY_BDGALLERY_VIEW_DEFAULT_DESC</message>
    </layout>
+   <fields name="request">
+		<fieldset name="request">
+			<field
+					name="id"
+					type="list"
+					label="COM_BDGALLERY_BDGALLERY_FIELD_GREETING_LABEL"
+					description="COM_BDGALLERY_BDGALLERY_FIELD_GREETING_DESC"
+					default="1">
+                 <option value="1">Exposicion</option>
+                 <option value="2">Proyectos</option>
+                 <option value="3">Formacion</option>
+         </field>
+		</fieldset>
+	</fields>
 </metadata>

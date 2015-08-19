@@ -31,7 +31,22 @@ class BdGalleryModelBdGallery extends JModelListItem
 	{
 		if (!isset($this->albums))
 		{
-			$this->albums = 'Hello World!';
+         $jinput = JFactory::getApplication()->input;
+			$id     = $jinput->get('id', 1, 'INT');
+
+			switch ($id)
+			{
+            case 3:
+					$this->albums = 'Formacion';
+					break;
+            case 2:
+					$this->albums = 'Proyectos';
+					break;
+				default:
+				case 1:
+					$this->albums = 'Exposicion';
+					break;
+			}
 		}
 
 		return $this->albums;
