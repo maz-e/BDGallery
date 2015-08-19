@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_helloworld
+ * @subpackage  com_bdgallery
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -11,4 +11,4 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<h1><?php echo $this->msg; ?></h1>
+<h1><?php echo $this->albums; ?></h1>
