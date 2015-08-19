@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+   <!-- Adding a menu item type -->
+   <layout title="COM_BDGALLERY_BDGALLERY_VIEW_DEFAULT_TITLE">
+      <message>COM_BDGALLERY_BDGALLERY_VIEW_DEFAULT_DESC</message>
+   </layout>
+</metadata>
