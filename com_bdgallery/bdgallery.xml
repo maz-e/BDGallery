@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="component" version="3.2.0" method="upgrade">
-   <name>BdGallery</name>
+   <name>COM_BDGALLERY</name>
    <!-- The following elements are optional and free of formatting constrains -->
    <creationDate>August 2015</creationDate>
    <author>Miguel Angel Zapatero</author>
@@ -9,9 +9,9 @@
    <copyright>Copyright Info</copyright>
    <license>License Info</license>
    <!-- The version string is recorded in the component table -->
-   <version>0.0.6</version>
+   <version>0.0.7</version>
    <!-- The description is optional and defaults to the name -->
-   <description>Description of the BdGallery component</description>
+   <description>COM_BDGALLERY_DESCRIPTION</description>
 
    <install> <!-- Runs on install -->
 		<sql>
@@ -40,10 +40,13 @@
       <folder>views</folder>
       <folder>models</folder>
    </files>
+   <languages folder="site/language">
+   	<language tag="es-ES">es-ES/es-ES.com_bdgallery.ini</language>
+   </languages>
 
    <administration>
       <!-- Administration Menu Section -->
-      <menu link='index.php?option=com_workteam'>BdGallery</menu>
+      <menu link='index.php?option=com_bdgallery'>COM_BDGALLERY_MENU</menu>
       <!-- Administration Main File Section -->
       <!-- Note the folder attribute: This attribute describes the folder
             to copy FROM in the package to install therefore files copied
@@ -62,5 +65,9 @@
          <!-- views files section -->
 			<folder>views</folder>
       </files>
+      <languages folder="admin/language">
+         <language tag="es-ES">es-ES/es-ES.com_bdgallery.ini</language>
+         <language tag="es-ES">es-ES/es-ES.com_bdgallery.sys.ini</language>
+		</languages>
    </administration>
 </extension>

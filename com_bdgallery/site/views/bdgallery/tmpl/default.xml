@@ -12,8 +12,8 @@
 			<field
 				name="id"
 				type="BdGallery"
-				label="COM_BDGALLERY_BDGALLERY_FIELD_GREETING_LABEL"
-				description="COM_BDGALLERY_BDGALLERY_FIELD_GREETING_DESC"
+				label="COM_BDGALLERY_BDGALLERY_FIELD_CATALBUM_LABEL"
+				description="COM_BDGALLERY_BDGALLERY_FIELD_CATALBUM_DESC"
 			/>
 		</fieldset>
 	</fields>
