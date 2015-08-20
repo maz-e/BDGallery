@@ -38,7 +38,25 @@ class BdGalleryViewAlbums extends JViewLegacy
 			return false;
 		}
 
+		// Set the toolbar
+		$this->addToolBar();
+
 		// Display the template
 		parent::display($tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function addToolBar()
+	{
+		JToolBarHelper::title(JText::_('COM_BDGALLERY_MANAGER_ALBUMS'));
+		JToolBarHelper::addNew('bdgallery.add');
+		JToolBarHelper::editList('bdgallery.edit');
+		JToolBarHelper::deleteList('', 'albums.delete');
 	}
 }
