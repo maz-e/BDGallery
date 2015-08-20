@@ -14,8 +14,3 @@ CREATE TABLE `#__bdgallery` (
 	ENGINE =MyISAM
 	AUTO_INCREMENT =0
 	DEFAULT CHARSET =utf8;
-
-INSERT INTO `#__bdgallery` (`album`) VALUES
-('Casa Ruso'),
-('Suelo Radiante'),
-('Placas Solares');
