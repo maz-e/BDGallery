@@ -9,12 +9,21 @@
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
- 
-// Get an instance of the controller prefixed by BdGallery
-$controller = JControllerLegacy::getInstance('BdGallery');
 
-// Perform the Request task
-$controller->execute(JFactory::getApplication()->input->get('task'));
-
-// Redirect if set by the controller
-$controller->redirect();
+/**
+ * General Controller of BdGallery component
+ *
+ * @package     Joomla.Bladis
+ * @subpackage  com_bdgallery
+ * @since       0.0.6
+ */
+class BdGalleryController extends JControllerLegacy
+{
+	/**
+	 * The default view for the display method.
+	 *
+	 * @var string
+	 * @since 12.2
+	 */
+	protected $default_view = 'albums';
+}
