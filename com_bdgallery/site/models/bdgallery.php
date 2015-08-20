@@ -18,27 +18,6 @@ defined('_JEXEC') or die('Restricted access');
 class BdGalleryModelBdGallery extends JModelList
 {
 	/**
-	 * @var string albums
-	 */
-	protected $albums;
-
-   /**
-	 * Method to get a table object, load it if necessary.
-	 *
-	 * @param   string  $type    The table name. Optional.
-	 * @param   string  $prefix  The class prefix. Optional.
-	 * @param   array   $config  Configuration array for model. Optional.
-	 *
-	 * @return  JTable  A JTable object
-	 *
-	 * @since   1.6
-	 */
-	public function getTable($type = 'BdGallery', $prefix = 'BdGalleryTable', $config = array())
-	{
-		return JTable::getInstance($type, $prefix, $config);
-	}
-
-	/**
 	 * Method to build an SQL query to load the list data.
 	 *
 	 * @return      string  An SQL query
