@@ -27,7 +27,7 @@ class BdGalleryControllerAlbums extends JControllerAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getModel($name = 'Albums', $prefix = 'BdGalleryModel', $config = array('ignore_request' => true))
+	public function getModel($name = 'BdGallery', $prefix = 'BdGalleryModel', $config = array('ignore_request' => true))
 	{
 		$model = parent::getModel($name, $prefix, $config);
 
