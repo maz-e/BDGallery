@@ -38,6 +38,9 @@ class BdGalleryViewAlbums extends JViewLegacy
 			return false;
 		}
 
+		// Set the submenu
+		HelloWorldHelper::addSubmenu('albums');
+
 		// Set the toolbar
 		$this->addToolBar();
 

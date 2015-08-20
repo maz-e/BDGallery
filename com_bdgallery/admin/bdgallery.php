@@ -9,7 +9,10 @@
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
- 
+
+// Require helper file
+JLoader::register('BdGalleryHelper', JPATH_COMPONENT . '/helpers/bdgallery.php');
+
 // Get an instance of the controller prefixed by BdGallery
 $controller = JControllerLegacy::getInstance('BdGallery');
 
