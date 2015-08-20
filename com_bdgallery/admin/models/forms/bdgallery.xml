@@ -17,7 +17,7 @@
 		<field
 			name="catid"
 			type="category"
-			extension="com_helloworld"
+			extension="com_bdgallery"
 			class="inputbox"
 			default=""
 			label="COM_BDGALLERY_BDGALLERY_FIELD_CATID_LABEL"
