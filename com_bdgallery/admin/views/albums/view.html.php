@@ -40,6 +40,7 @@ class BdGalleryViewAlbums extends JViewLegacy
 
 		// Set the submenu
 		BdGalleryHelper::addSubmenu('albums');
+		$this->sidebar = JHtmlSidebar::render();
 
 		// Set the toolbar
 		$this->addToolBar();
@@ -60,6 +61,8 @@ class BdGalleryViewAlbums extends JViewLegacy
 		JToolBarHelper::title(JText::_('COM_BDGALLERY_MANAGER_ALBUMS'));
 		JToolBarHelper::addNew('bdgallery.add');
 		JToolBarHelper::editList('bdgallery.edit');
+		JToolBarHelper::publishList('albums.publish');
+		JToolBarHelper::unpublishList('albums.unpublish');
 		JToolBarHelper::deleteList('', 'albums.delete');
 	}
 }
