@@ -64,6 +64,8 @@
 			<folder>models</folder>
          <!-- views files section -->
 			<folder>views</folder>
+         <!-- controllers files section -->
+			<folder>controllers</folder>
       </files>
       <languages folder="admin/language">
          <language tag="es-ES">es-ES/es-ES.com_bdgallery.ini</language>
