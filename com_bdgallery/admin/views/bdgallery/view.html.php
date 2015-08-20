@@ -51,6 +51,9 @@ class BdGalleryViewBdGallery extends JViewLegacy
 
 		// Display the template
 		parent::display($tpl);
+
+		// Set the document
+		$this->setDocument();
 	}
 
 	/**
@@ -84,5 +87,19 @@ class BdGalleryViewBdGallery extends JViewLegacy
 			'bdgallery.cancel',
 			$isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE'
 		);
+	}
+
+	/**
+	 * Method to set up the document properties
+	 *
+	 * @return void
+	 */
+	protected function setDocument()
+	{
+		$document = JFactory::getDocument();
+		$document->addScript(JURI::root() . $this->script);
+		$document->addScript(JURI::root() . "/administrator/components/com_bdgallery"
+		                                  . "/views/bdgallery/submitbutton.js");
+		JText::script('COM_BRAND_BRAND_ERROR_UNACCEPTABLE');
 	}
 }

@@ -26,5 +26,17 @@
 		>
 			<option value="0">JOPTION_SELECT_CATEGORY</option>
 		</field>
+		<field
+			name="published"
+			type="list"
+			class="chzn-color-state"
+			default="0"
+			size="1"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+		>
+				<option value="1">JPUBLISHED</option>
+				<option value="0">JUNPUBLISHED</option>
+		</field>
 	</fieldset>
 </form>
