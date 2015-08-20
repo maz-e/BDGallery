@@ -9,7 +9,7 @@
    <copyright>Copyright Info</copyright>
    <license>License Info</license>
    <!-- The version string is recorded in the component table -->
-   <version>0.0.4</version>
+   <version>0.0.5</version>
    <!-- The description is optional and defaults to the name -->
    <description>Description of the BdGallery component</description>
 
@@ -54,6 +54,10 @@
          <filename>bdgallery.php</filename>
          <!-- SQL files section -->
          <folder>sql</folder>
+         <!-- tables files section -->
+			<folder>tables</folder>
+			<!-- models files section -->
+			<folder>models</folder>
       </files>
    </administration>
 </extension>

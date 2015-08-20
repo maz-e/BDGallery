@@ -11,4 +11,4 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<h1><?php echo $this->albums; ?></h1>
+<pre><?php echo var_dump($this->albums); ?></pre>

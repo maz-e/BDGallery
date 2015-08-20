@@ -22,33 +22,40 @@ class BdGalleryModelBdGallery extends JModelList
 	 */
 	protected $albums;
 
-	/**
-	 * Get the albums
-         *
-	 * @return  string  The albums to be displayed to the user
+   /**
+	 * Method to get a table object, load it if necessary.
+	 *
+	 * @param   string  $type    The table name. Optional.
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
+	 *
+	 * @return  JTable  A JTable object
+	 *
+	 * @since   1.6
 	 */
-	public function getAlbums()
+	public function getTable($type = 'BdGallery', $prefix = 'BdGalleryTable', $config = array())
 	{
-		if (!isset($this->albums))
-		{
-         $jinput = JFactory::getApplication()->input;
-			$id     = $jinput->get('id', 1, 'INT');
+		return JTable::getInstance($type, $prefix, $config);
+	}
 
-			switch ($id)
-			{
-            case 3:
-					$this->albums = 'Formacion';
-					break;
-            case 2:
-					$this->albums = 'Proyectos';
-					break;
-				default:
-				case 1:
-					$this->albums = 'Exposicion';
-					break;
-			}
-		}
+	/**
+	 * Method to build an SQL query to load the list data.
+	 *
+	 * @return      string  An SQL query
+	 */
+	protected function getListQuery()
+	{
+		// Request the selected id
+		$jinput = JFactory::getApplication()->input;
+		$catid  = $jinput->get('id', 1, 'INT');
 
-		return $this->albums;
+		// Initialize variables.
+		$db    = JFactory::getDbo();
+		$query = $db->getQuery(true);
+      $query->select('*');
+      $query->from('#__bdgallery');
+		$query->where('catid = ' . (int) $catid);
+
+		return $query;
 	}
 }

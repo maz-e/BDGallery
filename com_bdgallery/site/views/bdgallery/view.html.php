@@ -27,7 +27,7 @@ class BdGalleryViewBdGallery extends JViewLegacy
    function display($tpl = null)
    {
       // Assign data to the view
-		$this->albums = $this->get('albums');
+		$this->albums = $this->get('Items');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
