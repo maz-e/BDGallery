@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form>
+<form
+				addrulepath="/administrator/components/com_bdgallery/models/rules"
+>
 	<fieldset>
 		<field
 			name="id"
@@ -11,7 +13,9 @@
 			label="COM_BDGALLERY_BDGALLERY_ALBUM_LABEL"
 			description="COM_BDGALLERY_BDGALLERY_ALBUM_DESC"
 			size="40"
-			class="inputbox"
+			class="inputbox input-xlarge input-large-text"
+			validate="album"
+			required="true"
 			default=""
 		/>
 		<field
