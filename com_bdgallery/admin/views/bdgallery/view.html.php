@@ -66,24 +66,28 @@ class BdGalleryViewBdGallery extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		$input = JFactory::getApplication()->input;
+		// $input = JFactory::getApplication()->input;
 
 		// Hide Joomla Administrator Main menu
-		$input->set('hidemainmenu', true);
+		// $input->set('hidemainmenu', true);
 
 		$isNew = ($this->item->id == 0);
 
 		if ($isNew)
 		{
-			$title = JText::_('COM_BDGALLERY_MANAGER_BDGALLERY_NEW');
+			// $title = JText::_('COM_BDGALLERY_MANAGER_BDGALLERY_NEW');
+			JToolBarHelper::title(JText::_('COM_BDGALLERY_MANAGER_BDGALLERY_NEW'));
 		}
 		else
 		{
-			$title = JText::_('COM_BDGALLERY_MANAGER_BDGALLERY_EDIT');
+			// $title = JText::_('COM_BDGALLERY_MANAGER_BDGALLERY_EDIT');
+			JToolBarHelper::title(JText::_('COM_BDGALLERY_MANAGER_BDGALLERY_EDIT'));
 		}
 
-		JToolBarHelper::title($title, 'bdgallery');
+		// JToolBarHelper::title($title, 'bdgallery');
+		JToolBarHelper::apply('bdgallery.apply');
 		JToolBarHelper::save('bdgallery.save');
+		JToolBarHelper::save2new('bdgallery.save2new');
 		JToolBarHelper::cancel(
 			'bdgallery.cancel',
 			$isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE'

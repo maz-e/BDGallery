@@ -32,7 +32,7 @@ abstract class BdGalleryHelper
 		JSubMenuHelper::addEntry(
 			JText::_('COM_BDGALLERY_SUBMENU_MESSAGES'),
 			'index.php?option=com_bdgallery',
-			$submenu == 'messages'
+			$submenu == 'albums'
 		);
 
 		JSubMenuHelper::addEntry(

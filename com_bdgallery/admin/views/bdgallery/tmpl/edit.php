@@ -18,7 +18,7 @@ JHtml::_('behavior.formvalidation');
         <fieldset class="adminform">
             <legend><?php echo JText::_('COM_BDGALLERY_BDGALLERY_DETAILS'); ?></legend>
             <div class="row-fluid">
-                <div class="span6">
+                <div class="span12">
                     <?php foreach ($this->form->getFieldset() as $field): ?>
                         <div class="control-group">
                             <div class="control-label"><?php echo $field->label; ?></div>

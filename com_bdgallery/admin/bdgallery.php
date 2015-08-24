@@ -16,8 +16,9 @@ JLoader::register('BdGalleryHelper', JPATH_COMPONENT . '/helpers/bdgallery.php')
 // Get an instance of the controller prefixed by BdGallery
 $controller = JControllerLegacy::getInstance('BdGallery');
 
-// Perform the Request task
-$controller->execute(JFactory::getApplication()->input->get('task'));
+/// Perform the Request task
+$input = JFactory::getApplication()->input;
+$controller->execute($input->getCmd('task'));
 
 // Redirect if set by the controller
 $controller->redirect();
