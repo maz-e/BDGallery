@@ -29,9 +29,10 @@ class BdGalleryModelAlbums extends JModelList
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-				'id',
-				'album',
-				'published'
+				'a.id',
+				'a.album_name',
+				'a.published',
+				'c.title'
 			);
 		}
 
@@ -50,16 +51,18 @@ class BdGalleryModelAlbums extends JModelList
 		$query = $db->getQuery(true);
 
 		// Create the base select statement.
-		$query->select('*')
-                ->from($db->quoteName('#__bdgallery'));
-
+		// $query->select('a.id, a.album_name, a.description, a.published, a.catid, a.totalimg, a.folderlist, a.imgfolder, c.title')
+		$query->select('a.*, c.title')
+                ->from($db->quoteName('#__bdgallery').'AS a')
+					 ->join('LEFT', '#__categories AS c ON c.id = a.catid');
+					 
 		// Filter: like / search
 		$search = $this->getState('filter.search');
 
 		if (!empty($search))
 		{
 			$like = $db->quote('%' . $search . '%');
-			$query->where('album LIKE ' . $like);
+			$query->where('a.album_name LIKE ' . $like);
 		}
 
 		// Filter by published state
@@ -67,15 +70,15 @@ class BdGalleryModelAlbums extends JModelList
 
 		if (is_numeric($published))
 		{
-			$query->where('published = ' . (int) $published);
+			$query->where('a.published = ' . (int) $published);
 		}
 		elseif ($published === '')
 		{
-			$query->where('(published IN (0, 1))');
+			$query->where('(a.published IN (0, 1))');
 		}
 
 		// Add the list ordering clause.
-		$orderCol	= $this->state->get('list.ordering', 'album');
+		$orderCol	= $this->state->get('list.ordering', 'a.album_name');
 		$orderDirn 	= $this->state->get('list.direction', 'asc');
 
 		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));

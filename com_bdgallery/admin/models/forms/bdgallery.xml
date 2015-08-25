@@ -8,7 +8,7 @@
 			type="hidden"
 		/>
 		<field
-			name="album"
+			name="album_name"
 			type="text"
 			label="COM_BDGALLERY_BDGALLERY_ALBUM_LABEL"
 			description="COM_BDGALLERY_BDGALLERY_ALBUM_DESC"
@@ -17,6 +17,16 @@
 			validate="album"
 			required="true"
 			default=""
+		/>
+		<field
+			name="description"
+			type="textarea"
+			class=""
+			default=""
+			label="COM_BDGALLERY_BDGALLERY_FIELD_DESCRIPTION_LABEL"
+			description="COM_BDGALLERY_BDGALLERY_FIELD_DESCRIPTION_DESC"
+			rows="10"
+			cols="5"
 		/>
 		<field
 			name="catid"
@@ -42,5 +52,21 @@
 				<option value="1">JPUBLISHED</option>
 				<option value="0">JUNPUBLISHED</option>
 		</field>
+		<field
+			name="folderlist"
+			type="folderlist"
+			default=""
+			label="COM_BDGALLERY_BDGALLERY_FIELD_FOLDERLIST_LABEL" 
+			directory="images/bladis"
+		/>
+		<field
+			name="imgfolder"
+			type="media"
+			class=""
+			default=""
+			label="COM_BDGALLERY_BDGALLERY_FIELD_IMGFOLDER_LABEL"
+			description="COM_BDGALLERY_BDGALLERY_FIELD_IMGFOLDER_DESC"
+			directory=""
+		/>
 	</fieldset>
 </form>

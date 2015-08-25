@@ -41,19 +41,28 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 					<?php echo JHtml::_('grid.checkall'); ?>
 				</th>
 				<th width="8%" class="center">
-					 <?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_PUBLISHED', 'published', $listDirn, $listOrder); ?>
+					<?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_PUBLISHED', 'a.published', $listDirn, $listOrder); ?>
 				</th>
-				<th width="84%">
-					 <?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_ALBUMS_NAME', 'album', $listDirn, $listOrder); ?>
+				<th width="64%">
+					<?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_ALBUMS_NAME', 'a.album_name', $listDirn, $listOrder); ?>
+				</th>
+            <th width="5%">
+               <i class="icon-picture"></i>
+            </th>
+            <th width="5%">
+               <?php echo JText::_('COM_BDGALLERY_THUMBNAIL'); ?>
+            </th>
+            <th width="10%" class="center">
+					<?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_CATEGORY', 'c.title', $listDirn, $listOrder); ?>
 				</th>
 				<th width="5%" class="center">
-					 <?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_ID', 'id', $listDirn, $listOrder); ?>
+					<?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_ID', 'a.id', $listDirn, $listOrder); ?>
 				</th>
 			</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<td colspan="5">
+					<td colspan="9">
 						<?php echo $this->pagination->getListFooter(); ?>
 					</td>
 				</tr>
@@ -70,15 +79,26 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 							<td>
 								<?php echo JHtml::_('grid.id', $i, $row->id); ?>
 							</td>
-							<td align="center">
+							<td class="center">
 								<?php echo JHtml::_('jgrid.published', $row->published, $i, 'albums.', true, 'cb'); ?>
 							</td>
 							<td>
 								<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_BDGALLERY_EDIT_ALBUMS'); ?>">
-									<?php echo $row->album; ?>
+									<?php echo $row->album_name; ?>
 								</a>
 							</td>
-							<td align="center">
+                     <td class="center">
+                        25
+                     </td>
+                     <td class="text-center">
+                        <?php if($row->imgfolder != NULL) : ?>
+                           <i class="icon-ok"></i>
+                        <?php endif;?>
+                     </td>
+                     <td class="center">
+								<?php echo $row->title; ?>
+							</td>
+							<td class="center">
 								<?php echo $row->id; ?>
 							</td>
 						</tr>
