@@ -66,9 +66,8 @@ class BdGalleryViewBdGallery extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
+		//Hide Joomla Administrator Main menu
 		// $input = JFactory::getApplication()->input;
-
-		// Hide Joomla Administrator Main menu
 		// $input->set('hidemainmenu', true);
 
 		$isNew = ($this->item->id == 0);

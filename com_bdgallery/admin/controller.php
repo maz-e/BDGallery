@@ -17,8 +17,7 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage  com_bdgallery
  * @since       0.0.6
  */
-class BdGalleryController extends JControllerLegacy
-{
+class BdGalleryController extends JControllerLegacy {
 	/**
 	 * The default view for the display method.
 	 *

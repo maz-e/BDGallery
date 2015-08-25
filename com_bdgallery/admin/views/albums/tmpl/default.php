@@ -19,7 +19,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
     <?php echo $this->sidebar; ?>
 </div>
 <div id="j-main-container" class="span10">
-	<form action="index.php?option=com_bdgallery&view=albums" method="post" id="adminForm" name="adminForm">
+	<form action="<?php echo JRoute::_('index.php?option=com_bdgallery&view=albums'); ?>" method="post" id="adminForm" name="adminForm">
 		<div class="row-fluid">
           <div class="span12">
               <?php
@@ -43,7 +43,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 				<th width="8%" class="center">
 					 <?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_PUBLISHED', 'published', $listDirn, $listOrder); ?>
 				</th>
-				<th width="50%">
+				<th width="84%">
 					 <?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_ALBUMS_NAME', 'album', $listDirn, $listOrder); ?>
 				</th>
 				<th width="5%" class="center">

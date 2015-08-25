@@ -18,4 +18,8 @@ defined('_JEXEC') or die('Restricted access');
  */
 class BdGalleryControllerBdGallery extends JControllerForm
 {
+   function __construct() {
+        $this->view_list = 'albums';
+        parent::__construct();
+    }
 }
