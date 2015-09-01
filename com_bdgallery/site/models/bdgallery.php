@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Joomla.Bladis
+ * @package     Joomla.Site
  * @subpackage  com_bdgallery
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
@@ -31,9 +31,13 @@ class BdGalleryModelBdGallery extends JModelList
 		// Initialize variables.
 		$db    = JFactory::getDbo();
 		$query = $db->getQuery(true);
-      $query->select('*');
-      $query->from('#__bdgallery');
-		$query->where('catid = ' . (int) $catid);
+
+		// Create the base select statement.
+		$query->select('a.*, c.title')
+                ->from($db->quoteName('#__bdgallery').'AS a')
+					 ->join('LEFT', '#__categories AS c ON c.id = a.catid');
+
+		$query->where('a.catid = ' . (int) $catid .' AND a.published = 1');
 
 		return $query;
 	}
