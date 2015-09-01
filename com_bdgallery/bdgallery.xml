@@ -9,7 +9,7 @@
    <copyright>Copyright Info</copyright>
    <license>License Info</license>
    <!-- The version string is recorded in the component table -->
-   <version>0.0.12</version>
+   <version>0.0.13</version>
    <!-- The description is optional and defaults to the name -->
    <description>COM_BDGALLERY_DESCRIPTION</description>
 
@@ -37,8 +37,10 @@
       <filename>index.html</filename>
       <filename>bdgallery.php</filename>
       <filename>controller.php</filename>
+      <filename>router.php</filename>
       <folder>views</folder>
       <folder>models</folder>
+      <folder>helpers</folder>
    </files>
    <languages folder="site/language">
    	<language tag="es-ES">es-ES/es-ES.com_bdgallery.ini</language>

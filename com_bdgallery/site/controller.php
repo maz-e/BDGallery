@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Joomla.Bladis
+ * @package     Joomla.Site
  * @subpackage  com_bdgallery
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.

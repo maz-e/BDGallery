@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Joomla.Bladis
+ * @package     Joomla.Site
  * @subpackage  com_bdgallery
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
@@ -9,6 +9,9 @@
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+
+// Require helper file
+JLoader::register('BdGalleryHelper', JPATH_COMPONENT . '/helpers/bdgallery.php');
 
 // Get an instance of the controller prefixed by BdGallery
 $controller = JControllerLegacy::getInstance('BdGallery');
