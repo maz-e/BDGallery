@@ -46,7 +46,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 				<th width="64%">
 					<?php echo JHtml::_('grid.sort', 'COM_BDGALLERY_ALBUMS_NAME', 'a.album_name', $listDirn, $listOrder); ?>
 				</th>
-            <th width="5%">
+            <th width="5%" class="center">
                <i class="icon-picture"></i>
             </th>
             <th width="5%">
@@ -88,9 +88,12 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 								</a>
 							</td>
                      <td class="center">
-                        25
+                        <?php
+                           $totalimg = scandir($row->folderlist);
+                           var_dump($totalimg);
+                        ?>
                      </td>
-                     <td class="text-center">
+                     <td class="center">
                         <?php if($row->imgfolder != NULL) : ?>
                            <i class="icon-ok"></i>
                         <?php endif;?>
