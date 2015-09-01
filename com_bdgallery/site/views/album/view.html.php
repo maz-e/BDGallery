@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since 0.0.1
  */
-class BdGalleryViewBdGallery extends JViewLegacy
+class BdGalleryViewAlbum extends JViewLegacy
 {
    /**
     * Display the BdGallery view
@@ -27,16 +27,16 @@ class BdGalleryViewBdGallery extends JViewLegacy
    function display($tpl = null)
    {
       // Assign data to the view
-      $this->albums = $this->get('Items');
+      $this->item    = $this->get('Item');
 
-      // Get the total number of albums
-      $this->totalalbums = count($this->albums);
+      // Create album breadcrumb
+      $this->app     = JFactory::getApplication();
+      $this->pathway = $this->app->getPathway();
+      $this->pathway->addItem($this->item['album_name']);
 
-      if($this->totalalbums == 1){
-         $this->folder = $this->albums[0]->folderlist;
-         $this->images = BdGalleryHelper::getImages($this->folder);
-         $tpl = 'album';
-      }
+      // Get the images from folder
+      $this->folder = $this->item['folder'];
+      $this->images = BdGalleryHelper::getImages($this->folder);
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
