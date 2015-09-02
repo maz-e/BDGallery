@@ -89,8 +89,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 							</td>
                      <td class="center">
                         <?php
-                           $totalimg = scandir($row->folderlist);
-                           var_dump($totalimg);
+                           echo $this->totalimg[$i];
                         ?>
                      </td>
                      <td class="center">

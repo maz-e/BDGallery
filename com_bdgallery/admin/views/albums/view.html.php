@@ -39,6 +39,9 @@ class BdGalleryViewAlbums extends JViewLegacy
 		$this->filterForm    	= $this->get('FilterForm');
 		$this->activeFilters 	= $this->get('ActiveFilters');
 
+		//Get total images
+		$this->totalimg = BdGalleryHelper::countImages($this->items);
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{

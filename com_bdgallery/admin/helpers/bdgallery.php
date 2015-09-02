@@ -41,4 +41,43 @@ abstract class BdGalleryHelper
 			$submenu == 'categories'
 		);
 	}
+
+	/**
+    * BdGallery component helper.
+    *
+    * @param   array $items  		Items from SQL query
+    *
+    * @return  array   $totalimg  	The total number of images by album
+    *
+    * @since   1.6
+    */
+
+   public static function countImages($items)
+   {
+		foreach ($items as $i => $item) {
+			// Set directory path
+			$folder = $item->folderlist;
+	      $dir = JPATH_ROOT . '/images/bladis/' . $folder;
+
+	      // Check if directory exists
+			if (is_dir($dir))
+			{
+				$files = scandir($dir);
+
+				$images = 0;
+				foreach ($files as $img)
+				{
+					if (!is_dir($dir . '/' . $img))
+					{
+						if (preg_match('/' . 'png' . '/', $img) || preg_match('/' . 'jpg' . '/', $img))
+						{
+							$images++;
+						}
+					}
+				}
+	      }
+	      $totalimg[$i] = $images;
+		}
+		return $totalimg;
+   }
 }
