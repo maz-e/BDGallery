@@ -21,7 +21,7 @@ abstract class BdGalleryHelper
     *
     * @since   1.6
     */
-   
+
    public static function getImages($folder)
    {
       // Set directory path
@@ -36,7 +36,7 @@ abstract class BdGalleryHelper
 			{
 				if (!is_dir($dir . '/' . $img))
 				{
-					if (preg_match('/' . 'png' . '/', $img))
+					if (preg_match('/' . 'png' . '/', $img) || preg_match('/' . 'jpg' . '/', $img))
 					{
 						$images[] = $img;
 					}
@@ -46,7 +46,7 @@ abstract class BdGalleryHelper
       if(!empty($images)) {
          return $images;
       } else {
-         return JText::_('COM_BDGALLERY_IMAGE_NOT_FOUND');;
+         return JText::_('COM_BDGALLERY_IMAGE_NOT_FOUND');
       }
    }
 }
