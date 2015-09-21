@@ -26,10 +26,10 @@ class Com_bdgalleryInstallerScript
 	function install($parent)
 	{
 		// Set the path of the new folder to add
-		$path = JPATH_SITE . '/images/albums';
+		$path = JPath::clean( JPATH_SITE.'/images/albums');
 
 		// Create the folder if not exists
-		if(!is_dir($path)){
+		if(!JFolder::exists($path)){
 			$mode = 0755;
 			JFolder::create($path, $mode);
 			echo '<p>'. JText::_('COM_BDGALLERY_ADD_FOLDER') .'</p>';
@@ -57,10 +57,10 @@ class Com_bdgalleryInstallerScript
 	function update($parent)
 	{
 		// Set the path of the new folder to add
-		$path = JPATH_SITE . '/images/albums';
-
+		$path = JPath::clean( JPATH_SITE.'/images/albums');
+		
 		// Create the folder if not exists
-		if(!is_dir($path)){
+		if(!JFolder::exists($path)){
 			$mode = 0755;
 			JFolder::create($path, $mode);
 			echo '<p>'. JText::_('COM_BDGALLERY_ADD_FOLDER') .'</p>';
