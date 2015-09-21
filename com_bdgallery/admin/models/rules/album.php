@@ -11,7 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 /**
- * Form Rule class for the Joomla Framework.
+ * Form Rule class for the Joomla Framework in the album_name input.
  */
 class JFormRuleAlbum extends JFormRule
 {
@@ -22,5 +22,6 @@ class JFormRuleAlbum extends JFormRule
 	 * @var		string
 	 * @since	2.5
 	 */
-	protected $regex = '^[^0-9]+$';
+	// Match any single character except symbols.
+	protected $regex = '^[^$-/:-?{-~!"^_`\[\]]+$';
 }
