@@ -9,6 +9,7 @@
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+jimport('joomla.filesystem.folder');
 
 /**
  * Script file of Bdgallery component
@@ -24,6 +25,16 @@ class Com_bdgalleryInstallerScript
 	 */
 	function install($parent)
 	{
+		// Set the path of the new folder to add
+		$path = JPATH_SITE . '/images/albums';
+
+		// Create the folder if not exists
+		if(!is_dir($path)){
+			$mode = 0755;
+			JFolder::create($path, $mode);
+			echo '<p>'. JText::_('COM_BDGALLERY_ADD_FOLDER') .'</p>';
+		}
+
 		// $parent is the class calling this method
 		$parent->getParent()->setRedirectURL('index.php?option=com_bdgallery');
 	}
@@ -45,6 +56,16 @@ class Com_bdgalleryInstallerScript
 	 */
 	function update($parent)
 	{
+		// Set the path of the new folder to add
+		$path = JPATH_SITE . '/images/albums';
+
+		// Create the folder if not exists
+		if(!is_dir($path)){
+			$mode = 0755;
+			JFolder::create($path, $mode);
+			echo '<p>'. JText::_('COM_BDGALLERY_ADD_FOLDER') .'</p>';
+		}
+
 		// $parent is the class calling this method
 		echo '<p>'. JText::sprintf('COM_BDGALLERY_UPDATE_TEXT', $parent->get('manifest')->version) .'</p>';
 	}
