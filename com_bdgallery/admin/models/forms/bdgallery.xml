@@ -56,8 +56,9 @@
 			name="folderlist"
 			type="folderlist"
 			default=""
-			label="COM_BDGALLERY_BDGALLERY_FIELD_FOLDERLIST_LABEL" 
-			directory="images/bladis"
+			label="COM_BDGALLERY_BDGALLERY_FIELD_FOLDERLIST_LABEL"
+			description="COM_BDGALLERY_BDGALLERY_FIELD_FOLDERLIST_DESC"
+			directory="images/albums"
 		/>
 		<field
 			name="imgfolder"

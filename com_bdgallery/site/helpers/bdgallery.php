@@ -25,7 +25,7 @@ abstract class BdGalleryHelper
    public static function getImages($folder)
    {
       // Set directory path
-      $dir = JPATH_BASE . '/images/bladis/' . $folder;
+      $dir = JPATH_BASE . '/images/albums/' . $folder;
 
       // Check if directory exists
 		if (is_dir($dir))

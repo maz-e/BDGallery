@@ -57,7 +57,7 @@ abstract class BdGalleryHelper
 		foreach ($items as $i => $item) {
 			// Set directory path
 			$folder = $item->folderlist;
-	      $dir = JPATH_ROOT . '/images/bladis/' . $folder;
+	      $dir = JPATH_ROOT . '/images/albums/' . $folder;
 
 	      // Check if directory exists
 			if (is_dir($dir))
@@ -75,8 +75,10 @@ abstract class BdGalleryHelper
 						}
 					}
 				}
-	      }
-	      $totalimg[$i] = $images;
+	      	$totalimg[$i] = $images;
+	      } else {
+				$totalimg[$i] = 0;
+			}
 		}
 		return $totalimg;
    }

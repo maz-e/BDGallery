@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
    <?php if( is_array($this->images) ) : ?>
       <?php foreach ($this->images as $img) : ?>
          <div class="col s6 m3 l2">
-            <?php echo JHtml::_('image', 'images/bladis/' . $this->folder . '/' . $img, $img, 'class="materialboxed" width="100%" style="margin-bottom: 18px;"'); ?>
+            <?php echo JHtml::_('image', 'images/albums/' . $this->folder . '/' . $img, $img, 'class="materialboxed" width="100%" style="margin-bottom: 18px;"'); ?>
          </div>
       <?php endforeach; ?>
    <?php else : ?>
