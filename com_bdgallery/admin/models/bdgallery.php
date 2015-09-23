@@ -74,6 +74,48 @@ class BdGalleryModelBdGallery extends JModelAdmin
 	}
 
 	/**
+	 * Method to create thumbnail before safe form.
+	 *
+	 * @param   $form
+	 */
+	protected function prepareTable($form)
+	{
+		if( !empty($form->imgfolder) && file_exists(JPATH_SITE.'/'.$form->imgfolder) ){
+
+			jimport('joomla.filesystem.file');
+			jimport( 'joomla.image.image' );
+
+			if (!class_exists('JFolder')){
+				jimport('joomla.filesystem.folder');
+			}
+
+			//Set the paths for the photo directories
+			$asset_dir = JPath::clean( JPATH_SITE.'/images/albums/'. $form->folderlist .'/thumbs/' );
+
+			//Create the gallery folder
+			if( !JFolder::exists( $asset_dir ) ){
+				JFolder::create( $asset_dir );
+				JFile::copy( JPATH_SITE.'/images/index.html', $asset_dir.'index.html');
+			}
+
+			$native_dest = JPATH_SITE.'/'.$form->imgfolder;
+			$nativeProps = Jimage::getImageFileProperties( $native_dest );
+			$thumbnail_dest = $asset_dir . JFile::getName($native_dest);
+
+			//Generate thumbnail
+			$jimage	= new JImage();
+			$jimage->loadFile( $native_dest );
+			$thumbnail = $jimage->cropResize('300', '300', $createNew = true);
+			$thumbnail->toFile( $thumbnail_dest, $nativeProps->type );
+
+
+			$form->imgfolder = 'images/albums/'. $form->folderlist .'/thumbs/'. JFile::getName($native_dest);
+		}
+
+		return true;
+	}
+
+	/**
 	 * Method to get the data that should be injected in the form.
 	 *
 	 * @return  mixed  The data for the form.
