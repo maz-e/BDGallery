@@ -54,32 +54,35 @@ abstract class BdGalleryHelper
 
    public static function countImages($items)
    {
-		foreach ($items as $i => $item) {
-			// Set directory path
-			$folder = $item->folderlist;
-	      $dir = JPATH_ROOT . '/images/albums/' . $folder;
+		if (!empty($items)) {
+			foreach ($items as $i => $item) {
+				// Set directory path
+				$folder = $item->folderlist;
+		      $dir = JPATH_ROOT . '/images/albums/' . $folder;
 
-	      // Check if directory exists
-			if (is_dir($dir))
-			{
-				$files = scandir($dir);
-
-				$images = 0;
-				foreach ($files as $img)
+		      // Check if directory exists
+				if (is_dir($dir))
 				{
-					if (!is_dir($dir . '/' . $img))
+					$files = scandir($dir);
+
+					$images = 0;
+					foreach ($files as $img)
 					{
-						if (preg_match('/' . 'png' . '/', $img) || preg_match('/' . 'jpg' . '/', $img))
+						if (!is_dir($dir . '/' . $img))
 						{
-							$images++;
+							if (preg_match('/' . 'png' . '/', $img) || preg_match('/' . 'jpg' . '/', $img))
+							{
+								$images++;
+							}
 						}
 					}
+		      	$totalimg[$i] = $images;
+		      } else {
+					$totalimg = 0;
 				}
-	      	$totalimg[$i] = $images;
-	      } else {
-				$totalimg[$i] = 0;
 			}
+			return $totalimg;
 		}
-		return $totalimg;
+		return true;
    }
 }
