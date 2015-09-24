@@ -10,6 +10,8 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+jimport('joomla.application.component.view');
+
 /**
  * Albums View
  *
@@ -34,8 +36,6 @@ class BdGalleryViewAlbums extends JViewLegacy
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
 		$this->state			= $this->get('State');
-		$this->filter_order 	= $app->getUserStateFromRequest($context.'filter_order', 'filter_order', 'a.album_name', 'cmd');
-		$this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');
 		$this->filterForm    	= $this->get('FilterForm');
 		$this->activeFilters 	= $this->get('ActiveFilters');
 

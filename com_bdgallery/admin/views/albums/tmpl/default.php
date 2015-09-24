@@ -10,11 +10,20 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 
+JHtml::_('bootstrap.tooltip');
+JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 
-$listOrder     = $this->escape($this->filter_order);
-$listDirn      = $this->escape($this->filter_order_Dir);
+$listOrder = $this->state->get('list.ordering', 'a.album_name');
+$listDirn  = $this->state->get('list.direction', 'asc');
+$saveOrder = $listOrder == 'a.ordering';
+if ($saveOrder)
+{
+	$saveOrderingUrl = 'index.php?option=com_bdgallery&task=albums.saveOrderAjax&tmpl=component';
+	JHtml::_('sortablelist.sortable', 'fileList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+}
 ?>
+
 <div id="j-sidebar-container" class="span2">
     <?php echo $this->sidebar; ?>
 </div>
@@ -33,10 +42,14 @@ $listDirn      = $this->escape($this->filter_order_Dir);
               <?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
           </div>
       <?php else : ?>
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover" id="fileList">
 			<thead>
 			<tr>
-				<th width="1%"><?php echo JText::_('COM_BDGALLERY_NUM'); ?></th>
+            <?php if (isset($this->items[0]->ordering)): ?>
+					<th width="1%" class="nowrap center hidden-phone">
+						<?php echo JHtml::_('grid.sort', '<i class="icon-menu-2"></i>', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
+					</th>
+				<?php endif; ?>
 				<th width="2%">
 					<?php echo JHtml::_('grid.checkall'); ?>
 				</th>
@@ -70,12 +83,26 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 			<tbody>
 				<?php if (!empty($this->items)) : ?>
 					<?php foreach ($this->items as $i => $row) :
-							$link = JRoute::_('index.php?option=com_bdgallery&task=bdgallery.edit&id=' . $row->id);
+                     $ordering = ($listOrder == 'a.ordering');
+							$link     = JRoute::_('index.php?option=com_bdgallery&task=bdgallery.edit&id=' . $row->id);
 					?>
 						<tr>
-							<td>
-								<?php echo $this->pagination->getRowOffset($i); ?>
+                  <?php if (isset($this->items[0]->ordering)): ?>
+							<td class="order nowrap center hidden-phone">
+                        <?php
+                           $disableClassName = '';
+   								$disabledLabel    = '';
+                           if (!$saveOrder) :
+      								$disabledLabel    = JText::_('JORDERINGDISABLED');
+      								$disableClassName = 'inactive tip-top';
+      							endif;
+                        ?>
+								<span class="sortable-handler hasTooltip <?php echo $disableClassName ?>" title="<?php echo $disabledLabel ?>">
+							     <i class="icon-menu"></i>
+						      </span>
+								<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $row->ordering; ?>" class="width-20 text-area-order " />
 							</td>
+						<?php endif; ?>
 							<td>
 								<?php echo JHtml::_('grid.id', $i, $row->id); ?>
 							</td>

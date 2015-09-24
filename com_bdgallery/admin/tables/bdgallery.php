@@ -25,4 +25,19 @@ class BdGalleryTableBdGallery extends JTable
 	{
 		parent::__construct('#__bdgallery', 'id', $db);
 	}
+
+	/**
+	 * Overloaded check function
+	 */
+	public function check()
+	{
+
+		//If there is an ordering column and this is a new row then get the next ordering value
+		if (property_exists($this, 'ordering') && $this->id == 0)
+		{
+			$this->ordering = self::getNextOrder();
+		}
+
+		return parent::check();
+	}
 }

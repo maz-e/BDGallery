@@ -8,6 +8,7 @@ CREATE TABLE `#__bdgallery` (
    `imgfolder` VARCHAR(255) NULL,
    `catid`	    int(11)    NOT NULL DEFAULT '0',
 	`published` tinyint(4) NOT NULL,
+	`ordering` INT(11)  NOT NULL ,
 	PRIMARY KEY (`id`)
 )
 	ENGINE =MyISAM

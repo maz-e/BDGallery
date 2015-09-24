@@ -9,6 +9,8 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+jimport('joomla.application.component.modellist');
+
 /**
  * AlbumList Model
  *
@@ -32,12 +34,23 @@ class BdGalleryModelAlbums extends JModelList
 				'a.id',
 				'a.album_name',
 				'a.published',
+				'a.ordering',
 				'c.title'
 			);
 		}
 
 		parent::__construct($config);
 	}
+
+	/**
+     * Method to auto-populate the model state.
+     *
+     */
+    protected function populateState($ordering = null, $direction = null) {
+
+		// List state information.
+		parent::populateState('a.album_name', 'asc');
+    }
 
 	/**
 	 * Method to build an SQL query to load the list data.
@@ -51,11 +64,10 @@ class BdGalleryModelAlbums extends JModelList
 		$query = $db->getQuery(true);
 
 		// Create the base select statement.
-		// $query->select('a.id, a.album_name, a.description, a.published, a.catid, a.totalimg, a.folderlist, a.imgfolder, c.title')
 		$query->select('a.*, c.title')
                 ->from($db->quoteName('#__bdgallery').'AS a')
 					 ->join('LEFT', '#__categories AS c ON c.id = a.catid');
-					 
+
 		// Filter: like / search
 		$search = $this->getState('filter.search');
 
@@ -78,10 +90,12 @@ class BdGalleryModelAlbums extends JModelList
 		}
 
 		// Add the list ordering clause.
-		$orderCol	= $this->state->get('list.ordering', 'a.album_name');
-		$orderDirn 	= $this->state->get('list.direction', 'asc');
+		$orderCol	= $this->state->get('list.ordering');
+		$orderDirn 	= $this->state->get('list.direction');
+		if ($orderCol && $orderDirn) {
+		   $query->order($db->escape($orderCol . ' ' . $orderDirn));
+		}
 
-		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
 		return $query;
 	}
 }

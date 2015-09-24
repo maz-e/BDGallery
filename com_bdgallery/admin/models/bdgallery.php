@@ -74,12 +74,48 @@ class BdGalleryModelBdGallery extends JModelAdmin
 	}
 
 	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return  mixed  The data for the form.
+	 *
+	 * @since   1.6
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		$data = JFactory::getApplication()->getUserState(
+			'com_bdgallery.edit.bdgallery.data',
+			array()
+		);
+
+		if (empty($data))
+		{
+			$data = $this->getItem();
+		}
+
+		return $data;
+	}
+
+	/**
 	 * Method to create thumbnail before safe form.
 	 *
 	 * @param   $form
 	 */
 	protected function prepareTable($form)
 	{
+		jimport('joomla.filter.output');
+
+		if ( empty($table->id) ) {
+
+			// Set ordering to the last item if not set
+			if (@$table->ordering === '') {
+				$db = JFactory::getDbo();
+				$db->setQuery('SELECT MAX(ordering) FROM #__clubbladis');
+				$max = $db->loadResult();
+				$table->ordering = $max+1;
+			}
+		}
+
 		if( !empty($form->imgfolder) && file_exists(JPATH_SITE.'/'.$form->imgfolder) ){
 
 			jimport('joomla.filesystem.file');
@@ -113,28 +149,5 @@ class BdGalleryModelBdGallery extends JModelAdmin
 		}
 
 		return true;
-	}
-
-	/**
-	 * Method to get the data that should be injected in the form.
-	 *
-	 * @return  mixed  The data for the form.
-	 *
-	 * @since   1.6
-	 */
-	protected function loadFormData()
-	{
-		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState(
-			'com_bdgallery.edit.bdgallery.data',
-			array()
-		);
-
-		if (empty($data))
-		{
-			$data = $this->getItem();
-		}
-
-		return $data;
 	}
 }

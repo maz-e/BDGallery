@@ -38,6 +38,7 @@ class BdGalleryModelBdGallery extends JModelList
 					 ->join('LEFT', '#__categories AS c ON c.id = a.catid');
 
 		$query->where('a.catid = ' . (int) $catid .' AND a.published = 1');
+		$query->order('a.ordering asc');
 
 		return $query;
 	}
